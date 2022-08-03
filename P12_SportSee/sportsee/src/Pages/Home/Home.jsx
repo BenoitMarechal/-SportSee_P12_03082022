@@ -11,7 +11,7 @@ const Home = () => {
 			<div className='container'>
 				<h1>Test users:</h1>
 				{localdata.USER_MAIN_DATA.map((user) => {
-					return <Athlete {...user} />;
+					return <Athlete {...user} key={user.id} />;
 				})}
 			</div>
 		</div>

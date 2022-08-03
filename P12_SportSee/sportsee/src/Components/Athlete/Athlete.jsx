@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Athlete.scss';
 
 const Athlete = (user) => {
 	return (
-		<div className='Athlete'>
+		<Link to={'profile/' + user.id} className='Athlete' key={user.id}>
 			{user.userInfos.firstName} {user.userInfos.lastName}
-		</div>
+		</Link>
 	);
 };
 
