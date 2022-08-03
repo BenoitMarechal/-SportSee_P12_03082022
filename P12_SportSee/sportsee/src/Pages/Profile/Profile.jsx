@@ -1,15 +1,46 @@
 import React from 'react';
 import Header from '../../Components/header/Header';
 import { useParams } from 'react-router';
+import localdata from '../../Assets/localdata.js';
+import Aside from '../../Components/aside/Aside';
+import './profile.scss';
 
-const Profile = (user) => {
-	console.log(useParams());
+const Profile = () => {
 	let { id } = useParams();
-	console.log(id);
+	let userId = parseInt(id);
+	/////////////////////////////
+	const userMain = localdata.USER_MAIN_DATA.find(
+		(element) => element.id === userId
+	);
+	console.log(userMain);
+	///////////////////////////
+	const userAvg = localdata.USER_AVERAGE_SESSIONS.find(
+		(element) => element.userId === userId
+	);
+	console.log(userAvg);
+	//////////////////////////////////////////////
+	const userActivity = localdata.USER_ACTIVITY.find(
+		(element) => element.userId === userId
+	);
+	console.log(userActivity);
+	/////////////////////////////////////////////////////////
+	const userPerf = localdata.USER_PERFORMANCE.find(
+		(element) => element.userId === userId
+	);
+	console.log(userPerf);
+	/////////////////////////////////////////
+
 	return (
 		<div className='profile page'>
 			<Header></Header>
-			{/* <div className='container'>{user.userInfos.firstName}</div> */}
+			<div className='container'>
+				<Aside></Aside>
+				<div className='container__content'>
+					<h1>
+						Bonjour <span className='red'>{userMain.userInfos.firstName}</span>
+					</h1>
+				</div>
+			</div>
 		</div>
 	);
 };

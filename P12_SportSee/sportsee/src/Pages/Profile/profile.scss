@@ -1,0 +1,23 @@
+.red {
+	color: red;
+}
+
+aside {
+	display: flex;
+	flex-direction: column;
+	width: 117px;
+	height: 100%;
+}
+.page {
+	height: 100%;
+}
+
+.container {
+	display: flex;
+	height: 100%;
+
+	&__content {
+		display: flex;
+		width: 100%;
+	}
+}
