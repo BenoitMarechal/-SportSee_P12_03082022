@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import localdata from '../../Assets/localdata.js';
 import Aside from '../../Components/aside/Aside';
 import './profile.scss';
+import WeightAndCalories from '../../Components/LineChart/WeightAndCalories';
 
 const Profile = () => {
 	let { id } = useParams();
@@ -12,22 +13,24 @@ const Profile = () => {
 	const userMain = localdata.USER_MAIN_DATA.find(
 		(element) => element.id === userId
 	);
-	console.log(userMain);
+	//console.log(userMain);
 	///////////////////////////
 	const userAvg = localdata.USER_AVERAGE_SESSIONS.find(
 		(element) => element.userId === userId
 	);
-	console.log(userAvg);
+	//console.log(userAvg);
 	//////////////////////////////////////////////
 	const userActivity = localdata.USER_ACTIVITY.find(
 		(element) => element.userId === userId
 	);
-	console.log(userActivity);
+	console.log('userActivity');
+	console.log(userActivity.sessions);
+
 	/////////////////////////////////////////////////////////
 	const userPerf = localdata.USER_PERFORMANCE.find(
 		(element) => element.userId === userId
 	);
-	console.log(userPerf);
+	//console.log(userPerf);
 	/////////////////////////////////////////
 
 	return (
@@ -39,6 +42,9 @@ const Profile = () => {
 					<h1>
 						Bonjour <span className='red'>{userMain.userInfos.firstName}</span>
 					</h1>
+					<div>
+						<WeightAndCalories {...userActivity} />
+					</div>
 				</div>
 			</div>
 		</div>
