@@ -7,54 +7,12 @@ import {
 	PolarRadiusAxis,
 } from 'recharts';
 
-const data = [
-	{
-		subject: 'Math',
-		A: 120,
-		B: 110,
-		//  fullMark: 150
-	},
-	{
-		subject: 'Chinese',
-		A: 98,
-		B: 130,
-		//  fullMark: 150
-	},
-	{
-		subject: 'English',
-		A: 86,
-		B: 130,
-		//  fullMark: 150
-	},
-	{
-		subject: 'Geography',
-		A: 99,
-		B: 100,
-		// fullMark: 150
-	},
-	{
-		subject: 'Physics',
-		A: 85,
-		B: 90,
-		// fullMark: 150
-	},
-	{
-		subject: 'History',
-		A: 65,
-		B: 85,
-		// fullMark: 150
-	},
-];
-
 //export default function App() {
 const Performance = (props) => {
-	console.log('props');
-	console.log(props);
 	let sortedData = props.data.map((element) => ({
 		value: element.value,
 		kind: props.kind[element.kind],
 	}));
-	console.log(sortedData);
 
 	return (
 		<RadarChart

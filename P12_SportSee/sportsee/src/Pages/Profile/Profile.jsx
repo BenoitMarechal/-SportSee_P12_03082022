@@ -6,6 +6,7 @@ import Aside from '../../Components/aside/Aside';
 import './profile.scss';
 import WeightAndCalories from '../../Components/WeightAndCalories/WeightAndCalories';
 import Performance from '../../Components/Performance/Performance';
+import AverageDuration from '../../Components/AverageDuration/AvergaeDuration';
 
 const Profile = () => {
 	let { id } = useParams();
@@ -20,8 +21,8 @@ const Profile = () => {
 	const userAvg = localdata.USER_AVERAGE_SESSIONS.find(
 		(element) => element.userId === userId
 	);
-	// console.log('userAvg');
-	// console.log(userAvg);
+	console.log('userAvg');
+	console.log(userAvg);
 	//////////////////////////////////////////////
 	const userActivity = localdata.USER_ACTIVITY.find(
 		(element) => element.userId === userId
@@ -50,6 +51,7 @@ const Profile = () => {
 						<WeightAndCalories {...userActivity} />
 					</div>
 					<Performance {...userPerf} />
+					<AverageDuration {...userAvg} />
 				</div>
 			</div>
 		</div>
