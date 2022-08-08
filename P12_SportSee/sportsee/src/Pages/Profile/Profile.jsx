@@ -8,6 +8,7 @@ import WeightAndCalories from '../../Components/WeightAndCalories/WeightAndCalor
 import Performance from '../../Components/Performance/Performance';
 import AverageDuration from '../../Components/AverageDuration/AverageDuration';
 import Percentage from '../../Components/Percentage/Percentage';
+import GlobalData from '../../Components/GlobalData/GlobalData';
 
 const Profile = () => {
 	let { id } = useParams();
@@ -16,14 +17,14 @@ const Profile = () => {
 	const userMain = localdata.USER_MAIN_DATA.find(
 		(element) => element.id === userId
 	);
-	console.log('userMain');
-	console.log(userMain);
+	// console.log('userMain');
+	// console.log(userMain);
 	///////////////////////////
 	const userAvg = localdata.USER_AVERAGE_SESSIONS.find(
 		(element) => element.userId === userId
 	);
-	console.log('userAvg');
-	console.log(userAvg);
+	// console.log('userAvg');
+	// console.log(userAvg);
 	//////////////////////////////////////////////
 	const userActivity = localdata.USER_ACTIVITY.find(
 		(element) => element.userId === userId
@@ -43,17 +44,33 @@ const Profile = () => {
 		<div className='profile page'>
 			<Header></Header>
 			<div className='container'>
-				<Aside></Aside>
+				<Aside className='container__aside'></Aside>
 				<div className='container__content'>
-					<h1>
-						Bonjour <span className='red'>{userMain.userInfos.firstName}</span>
-					</h1>
-					<div>
-						<WeightAndCalories {...userActivity} />
+					<div className='container__content__landing'>
+						<h1 className='container__content__landing__h1'>
+							Bonjour{' '}
+							<span className='red'>{userMain.userInfos.firstName}</span>
+						</h1>
+						<p className='container__content__landing__txt'>
+							Félicitation! Vous avez explosé vos objectifs hier! 👏
+						</p>
 					</div>
-					<Performance {...userPerf} />
-					<AverageDuration {...userAvg} />
-					<Percentage {...userMain} />
+					<div className='container__content__graphics'>
+						<div className='container__content__graphics__charts'>
+							<div className='container__content__graphics__charts__top'>
+								<WeightAndCalories {...userActivity} />
+							</div>
+							<div className='container__content__graphics__charts__bottom'>
+								<AverageDuration {...userAvg} />
+								<Performance {...userPerf} />
+								<Percentage {...userMain} />
+							</div>
+						</div>
+
+						<div className='container__content__graphics__golbalData'>
+							<GlobalData {...userMain} />
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

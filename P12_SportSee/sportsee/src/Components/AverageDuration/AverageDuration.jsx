@@ -25,7 +25,6 @@ const AverageDuration = (props) => {
 		day: days[element.day],
 		sessionLength: element.sessionLength,
 	}));
-	console.log(formatedProps);
 	return (
 		<LineChart
 			width={500}
