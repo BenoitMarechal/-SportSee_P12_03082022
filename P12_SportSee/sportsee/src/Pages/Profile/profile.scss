@@ -14,16 +14,16 @@ nav {
 	color: red;
 }
 
-aside {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 117px;
-	height: auto;
-	position: relative;
-}
 .page {
 	height: 100%;
+}
+
+.recharts-bar-rectangle {
+	width: 2px !important;
+}
+
+.recharts-rectangle {
+	width: 2px !important;
 }
 
 .container {
@@ -48,8 +48,8 @@ aside {
 			&__charts {
 				display: flex;
 				flex-direction: column;
-				&__top {
-				}
+				// &__top {
+				// }
 
 				&__bottom {
 					display: flex;
@@ -57,8 +57,8 @@ aside {
 				}
 			}
 
-			&__globalData {
-			}
+			// &__globalData {
+			// }
 		}
 	}
 }
