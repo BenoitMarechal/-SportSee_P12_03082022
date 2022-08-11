@@ -32,7 +32,7 @@ const GlobalData = (props) => {
 		},
 	];
 	return (
-		<div className='keyData'>
+		<div className='container__content__graphics__globalData'>
 			{formatedProps.map((nutrient) => {
 				return (
 					<div key={nutrient.label}>

@@ -1,13 +1,42 @@
-// .recharts-legend-wrapper {
-// 	display: none;
-// }
 .custom-tooltip {
 	background-color: red;
 	color: white;
 	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 500;
-	font-size: 7px;
+	font-size: 12px;
 	line-height: 24px;
-	padding: 0 10px;
+	padding: 10px;
+	border: none;
+	outline: none;
 }
+
+.weight-and-calories__h2 {
+	position: relative;
+	top: 65px;
+	margin-left: 20px;
+	margin-top: 0;
+}
+
+.custom-tooltip:focus-visible {
+	outline: none;
+	border: none !important;
+}
+.custom-tooltip:hover {
+	outline: none;
+	border: none !important;
+}
+
+.recharts-tooltip-wrapper {
+	border: none;
+	outline: none;
+}
+
+.legend {
+	color: green;
+	background-color: yellow;
+}
+// .recharts-legend-wrapper {
+// 	top: 0px !important;
+// 	right: 0px !important;
+// }

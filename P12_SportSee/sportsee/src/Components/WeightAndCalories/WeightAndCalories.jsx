@@ -10,8 +10,7 @@ import {
 	Tooltip,
 	Legend,
 } from 'recharts';
-
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload }) => {
 	if (active && payload && payload.length) {
 		return (
 			<div className='custom-tooltip'>
@@ -34,12 +33,11 @@ const WeightAndCalories = (props) => {
 	// console.log(formatedProps);
 
 	return (
-		<div className=''>
-			<p>Activité quotidienne</p>
+		<div>
+			<h2 className='weight-and-calories__h2'>Activité quotidienne</h2>
 			<BarChart
-				id='weight-and-calories'
-				width={500}
-				height={300}
+				width={835}
+				height={350}
 				data={formatedProps}
 				margin={{
 					top: 20,
@@ -47,19 +45,45 @@ const WeightAndCalories = (props) => {
 					left: 20,
 					bottom: 5,
 				}}>
-				<CartesianGrid horizontal='true' vertical='' />
-				<XAxis dataKey='day' />
-				<YAxis yAxisId='right' orientation='left' stroke='#282D30' />
-				<YAxis yAxisId='left' orientation='right' stroke='#E60000' />
+				<div>Activité quotidienne</div>
+				<CartesianGrid horizontal={'true'} vertical='' strokeDasharray='2 2' />
+				<XAxis
+					dataKey='day'
+					padding={{ left: -50, right: -51 }}
+					tickLine={false}
+					//strokeDasharray='2 2'
+					//axisLine={'1px solid blue'}
+					stroke='#9B9EAC'
+				/>
+				<YAxis yAxisId='right' orientation='left' color='#282D38' hide={true} />
+				<YAxis
+					yAxisId='left'
+					orientation='right'
+					stroke='#9B9EAC'
+					type='number'
+					domain={['dataMin - 1', 'dataMax + 1']}
+					tickLine={false}
+					axisLine={false}
+					minTickGap={'0'}
+					tickSize={45}
+					// interval={1}
+					allowDecimals={false}
+				/>
 				{/* <Tooltip /> */}
 				<Tooltip content={<CustomTooltip />} />
-				<Legend />
+				<Legend
+					align='right'
+					verticalAlign='top'
+					iconType={'circle'}
+					height={50}
+				/>
 				<Bar
 					yAxisId='left'
 					dataKey='kilogram'
 					fill='#282D30'
 					barSize={7}
 					radius={[3, 3, 0, 0]}
+					name={'Poids (kg)'}
 				/>
 				<Bar
 					yAxisId='right'
@@ -67,6 +91,7 @@ const WeightAndCalories = (props) => {
 					fill='#E60000'
 					barSize={7}
 					radius={[3, 3, 0, 0]}
+					name={'Calories brulées (kCal)'}
 				/>
 			</BarChart>
 		</div>

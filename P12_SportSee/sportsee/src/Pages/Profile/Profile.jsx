@@ -67,9 +67,7 @@ const Profile = () => {
 							</div>
 						</div>
 
-						<div className='container__content__graphics__golbalData'>
-							<GlobalData {...userMain} />
-						</div>
+						<GlobalData {...userMain} />
 					</div>
 				</div>
 			</div>

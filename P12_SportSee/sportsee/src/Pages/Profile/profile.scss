@@ -29,27 +29,30 @@ nav {
 .container {
 	display: flex;
 
-	//height: auto;
-	//width: 100%;
-
 	&__content {
 		display: flex;
 		width: 100%;
 		flex-direction: column;
 
-		// &__landing {
-		// 	width: 100%;
-		// }
+		&__landing {
+			margin-left: 20px;
+		}
 
 		&__graphics {
 			display: flex;
 			width: 100%;
 			justify-content: space-between;
+			align-items: flex-start;
+			border: 1px solid green;
 			&__charts {
 				display: flex;
 				flex-direction: column;
-				// &__top {
-				// }
+				justify-content: flex-start;
+				border: 1px solid blue;
+				//width: 100%;
+				&__top {
+					margin-top: -65px;
+				}
 
 				&__bottom {
 					display: flex;
@@ -57,8 +60,14 @@ nav {
 				}
 			}
 
-			// &__globalData {
-			// }
+			&__globalData {
+				border: 1px solid red;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+
+				height: 100%;
+			}
 		}
 	}
 }
