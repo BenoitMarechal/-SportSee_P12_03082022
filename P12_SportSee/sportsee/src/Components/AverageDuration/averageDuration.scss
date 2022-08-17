@@ -1,0 +1,52 @@
+.custom-tooltip-duration {
+	background-color: white;
+	//opacity: 0.5;
+	position: relative;
+	//position: absolute;
+	top: 0;
+	bottom: 0;
+	//left: 50px;
+	right: 50px;
+	color: black;
+	font-size: 14px;
+	// height: 25px;
+	// width: 39px;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
+
+.shadow {
+	background-color: orange;
+	width: 100%;
+	height: 100%;
+}
+
+.sessionLength__container {
+	background-color: red;
+	height: 263px;
+	width: 258px;
+	border-radius: 5px;
+	z-index: 1;
+	&__title {
+		z-index: 2;
+		color: white;
+		position: absolute;
+		margin-left: 10px;
+	}
+}
+
+// .custom-tooltip-duration::after {
+// 	position: relative;
+// 	content: '';
+// 	left: 00px;
+// 	top: 0px;
+// 	bottom: 0px;
+// 	height: 200px;
+// 	width: 100px;
+// 	background-color: blue;
+// 	opacity: 0.3;
+// }

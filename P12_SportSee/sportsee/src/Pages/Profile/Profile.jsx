@@ -66,7 +66,6 @@ const Profile = () => {
 								<Percentage {...userMain} />
 							</div>
 						</div>
-
 						<GlobalData {...userMain} />
 					</div>
 				</div>

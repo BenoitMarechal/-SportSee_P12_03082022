@@ -1,4 +1,5 @@
 import React from 'react';
+import './Performance.scss';
 import {
 	Radar,
 	RadarChart,
@@ -15,24 +16,32 @@ const Performance = (props) => {
 	}));
 
 	return (
-		<RadarChart
-			cx={300}
-			cy={250}
-			outerRadius={150}
-			width={500}
-			height={500}
-			data={sortedData}>
-			<PolarGrid />
-			<PolarAngleAxis dataKey='kind' />
-			<PolarRadiusAxis />
-			<Radar
-				name=''
-				dataKey='value'
-				stroke='#8884d8'
-				fill='#8884d8'
-				fillOpacity={0.6}
-			/>
-		</RadarChart>
+		<div className='performanceContainer'>
+			<RadarChart
+				cx={'50%'}
+				cy={'50%'}
+				outerRadius={70}
+				startAngle={-150}
+				endAngle={210}
+				// 			height: 263px;
+				// width: 258px;
+				// border-radius: 5px;
+				stroke={'white'}
+				width={300}
+				height={300}
+				position={'absolute'}
+				data={sortedData}>
+				<PolarGrid />
+				<PolarAngleAxis dataKey='kind' hide={true} stroke={'white'} />
+				<PolarRadiusAxis hide={true} />
+				<Radar
+					name=''
+					dataKey='value'
+					stroke={false}
+					fill='rgba(255, 1, 1, 0.7)'
+				/>
+			</RadarChart>
+		</div>
 	);
 };
 export default Performance;

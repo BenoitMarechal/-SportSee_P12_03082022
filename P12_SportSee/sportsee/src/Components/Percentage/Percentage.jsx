@@ -1,7 +1,7 @@
 import React from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 const backgroundColor = '##FF08';
-const COLORS = ['	#FF0000', backgroundColor];
+const COLORS = ['#FF0000', backgroundColor];
 
 const Percentage = (props) => {
 	let score = props.todayScore ? props.todayScore * 100 : props.score * 100;
