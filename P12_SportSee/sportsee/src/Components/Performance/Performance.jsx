@@ -7,12 +7,21 @@ import {
 	PolarAngleAxis,
 	PolarRadiusAxis,
 } from 'recharts';
+let kindTranslation = {
+	cardio: 'Cardio',
+	energy: 'Energie',
+	endurance: 'Endurance',
+	strength: 'Force',
+	speed: 'Vitesse',
+	intensity: 'Intensité',
+};
 
 //export default function App() {
 const Performance = (props) => {
+	console.log(props);
 	let sortedData = props.data.map((element) => ({
 		value: element.value,
-		kind: props.kind[element.kind],
+		kind: kindTranslation[props.kind[element.kind]],
 	}));
 
 	return (
@@ -37,7 +46,7 @@ const Performance = (props) => {
 				<Radar
 					name=''
 					dataKey='value'
-					stroke={false}
+					//stroke={false}
 					fill='rgba(255, 1, 1, 0.7)'
 				/>
 			</RadarChart>

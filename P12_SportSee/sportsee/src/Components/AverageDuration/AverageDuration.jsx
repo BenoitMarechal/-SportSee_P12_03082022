@@ -92,7 +92,7 @@ const AverageDuration = (props) => {
 					textAnchor='middle'
 					//height={150}
 					// stroke='#9B9EAC'
-					style={{ 'background-color': '	#0000FF' }}
+					//style={{ 'background-color': '	#0000FF' }}
 				/>
 				<YAxis hide={true} height={150} />
 				<Tooltip content={<CustomTooltip />} />
