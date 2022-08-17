@@ -29,7 +29,7 @@ const Performance = (props) => {
 			<RadarChart
 				cx={'50%'}
 				cy={'50%'}
-				outerRadius={70}
+				outerRadius={80}
 				startAngle={-150}
 				endAngle={210}
 				// 			height: 263px;
@@ -40,9 +40,9 @@ const Performance = (props) => {
 				height={300}
 				position={'absolute'}
 				data={sortedData}>
-				<PolarGrid />
-				<PolarAngleAxis dataKey='kind' hide={true} stroke={'white'} />
-				<PolarRadiusAxis hide={true} />
+				<PolarGrid radialLines={false} />
+				<PolarAngleAxis dataKey='kind' stroke={'white'} />
+				{/* <PolarRadiusAxis stroke={'blue'} /> */}
 				<Radar
 					name=''
 					dataKey='value'
