@@ -1,0 +1,42 @@
+.pieChart__container {
+	//position: relative;
+	height: 263px;
+	width: 258px;
+	border-radius: 5px;
+	margin: 20px 20px 0px 20px;
+
+	&__title {
+		position: absolute;
+		display: flex;
+		height: auto;
+		margin-left: 30px;
+		margin-top: 30px;
+		font-size: 15px;
+		font-weight: 500;
+	}
+
+	&__text {
+		position: relative;
+		// top: 50%;
+		bottom: 170px;
+
+		color: rgba(40, 45, 48, 1);
+		font-size: 26px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: auto;
+
+		&__score {
+		}
+		&__small {
+			color: rgba(116, 121, 140, 1);
+			font-size: 16px;
+			display: flex;
+			flex-wrap: wrap;
+			width: 60px;
+			justify-content: center;
+			text-align: center;
+		}
+	}
+}

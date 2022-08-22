@@ -1,12 +1,6 @@
 import React from 'react';
 import './Performance.scss';
-import {
-	Radar,
-	RadarChart,
-	PolarGrid,
-	PolarAngleAxis,
-	PolarRadiusAxis,
-} from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
 let kindTranslation = {
 	cardio: 'Cardio',
 	energy: 'Energie',
@@ -29,24 +23,24 @@ const Performance = (props) => {
 			<RadarChart
 				cx={'50%'}
 				cy={'50%'}
-				outerRadius={80}
+				outerRadius={90}
 				startAngle={-150}
 				endAngle={210}
 				// 			height: 263px;
 				// width: 258px;
 				// border-radius: 5px;
 				stroke={'white'}
-				width={300}
-				height={300}
-				position={'absolute'}
+				width={258}
+				height={263}
+				//position={'absolute'}
 				data={sortedData}>
 				<PolarGrid radialLines={false} />
-				<PolarAngleAxis dataKey='kind' stroke={'white'} />
-				{/* <PolarRadiusAxis stroke={'blue'} /> */}
+				<PolarAngleAxis dataKey='kind' stroke={'white'} strokeWidth={0} />
+				{/* <PolarRadiusAxis stroke={'blue'} radius={120} /> */}
 				<Radar
 					name=''
 					dataKey='value'
-					//stroke={false}
+					strokeWidth={0}
 					fill='rgba(255, 1, 1, 0.7)'
 				/>
 			</RadarChart>

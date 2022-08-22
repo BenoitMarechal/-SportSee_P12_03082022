@@ -1,0 +1,31 @@
+.container__content__graphics__globalData {
+	margin-right: 20px;
+}
+
+.keyData {
+	display: flex;
+
+	&__img {
+		height: 60px;
+		width: 60px;
+		margin-right: 10px;
+	}
+	&__txt {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		&__amount {
+			font-style: normal;
+			font-weight: 700;
+			font-size: 20px;
+		}
+
+		&__label {
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+
+			color: #74798c;
+		}
+	}
+}

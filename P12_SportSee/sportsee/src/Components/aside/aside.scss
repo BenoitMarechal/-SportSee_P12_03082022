@@ -10,10 +10,12 @@
 	&__container {
 		align-items: center;
 		display: flex;
+		//height: 100%;
 		flex-direction: column;
 		margin-top: 50px;
 		position: relative;
 		align-items: center;
+		margin-bottom: 100px;
 
 		&__logo {
 			margin: 20px 0;
@@ -24,7 +26,13 @@
 
 	&__copyright {
 		transform: rotateZ(-90deg);
-		width: 200px;
-		margin-top: 120px;
+		display: flex;
+		flex-wrap: nowrap;
+
+		//	margin-bottom: 200px;
+		//width: auto;
+		//height: 300px;
+		width: 180px;
+		//margin-top: 120px;
 	}
 }
