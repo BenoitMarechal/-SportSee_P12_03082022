@@ -28,7 +28,7 @@ const Home = () => {
 				</div>
 				{/* BACKEND DATA */}
 				<div className='homeContainer__athletes'>
-					<h2>Test users (backend data):</h2>
+					<h2>Test users (api data):</h2>
 					<div
 						className='homeContainer__athletes__container'
 						onClick={clickAPI}>

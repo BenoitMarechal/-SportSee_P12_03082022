@@ -1,7 +1,4 @@
-/// message api indsponible dans la page avec header etc
-//message d'accueil selon objectifs
 ////classe pour données
-/// vérifier la condition data loading lorsque l'API est coupée.
 
 import React, { useEffect, useState } from 'react';
 import Header from '../../Components/header/Header';
@@ -21,24 +18,28 @@ const Profile = () => {
 	let userId = parseInt(id);
 	////////////////////////////////////////////////////
 	const [backMain, setBackMain] = useState({});
-	const [dataLoading, setDataLoading] = useState(true);
+	const [dataLoading, setDataLoading] = useState(env === 'api' ? true : false);
 	let mainUrl = 'http://localhost:3000/user/' + id;
 	////////////////////////////////////////////////////////
 	const [backActivity, setBackActivity] = useState({});
-	const [activityLoading, setActivityLoading] = useState(true);
+	const [activityLoading, setActivityLoading] = useState(
+		env === 'api' ? true : false
+	);
 	const activityUrl = 'http://localhost:3000/user/' + id + '/activity';
 	////////////////////////////////////////////////////
 	const [backAverage, setBackAverage] = useState({});
-	const [averageLoading, setAverageLoading] = useState(true);
+	const [averageLoading, setAverageLoading] = useState(
+		env === 'api' ? true : false
+	);
 	let averageUrl = 'http://localhost:3000/user/' + id + '/average-sessions';
 	/////////////////////////////////////////////////////////////////
 	const [backPerf, setBackPerf] = useState({});
-	const [perfLoading, setPerfLoading] = useState(true);
+	const [perfLoading, setPerfLoading] = useState(env === 'api' ? true : false);
 	let perfUrl = 'http://localhost:3000/user/' + id + '/performance';
 
 	//fetch main
 	useEffect(() => {
-		setDataLoading(true);
+		if (env === 'api') setDataLoading(true);
 		fetch(mainUrl)
 			.then((response) => response.json())
 			.then(({ data }) => {
@@ -54,7 +55,7 @@ const Profile = () => {
 	console.log(userMain);
 
 	useEffect(() => {
-		setAverageLoading(true);
+		if (env === 'api') setAverageLoading(true);
 		fetch(averageUrl)
 			.then((response) => response.json())
 			.then(({ data }) => {
@@ -77,8 +78,9 @@ const Profile = () => {
 	///Fetch Activity
 
 	useEffect(() => {
-		//console.log(activityLoading);
-		setActivityLoading(true);
+		if (env === 'api')
+			//console.log(activityLoading);
+			setActivityLoading(true);
 		//console.log(activityLoading);
 		fetch(activityUrl)
 			.then((response) => response.json())
@@ -101,7 +103,7 @@ const Profile = () => {
 	/////////////////////////////////////////////////////////
 	//fecth perf
 	useEffect(() => {
-		setPerfLoading(true);
+		if (env === 'api') setPerfLoading(true);
 		fetch(perfUrl)
 			.then((response) => response.json())
 			.then(({ data }) => {
@@ -130,7 +132,7 @@ const Profile = () => {
 					<div className='container__content__landing'>
 						<h1 className='container__content__landing__h1'>
 							Chargement... si la page ne s'affiche pas, veuillez vérifier la
-							disponibilité de l'API
+							disponibilité de l'API ou utiliser les données mockées
 						</h1>
 					</div>
 				</div>
@@ -157,22 +159,18 @@ const Profile = () => {
 						<div className='container__content__graphics__charts'>
 							<div className='container__content__graphics__charts__top'>
 								{activityLoading === true ? (
-									<div className='load'>LOADING</div>
+									''
 								) : (
 									<WeightAndCalories {...userActivity} />
 								)}
 							</div>
 							<div className='container__content__graphics__charts__bottom'>
 								{averageLoading === true ? (
-									<div className='load'>LOADING</div>
+									''
 								) : (
 									<AverageDuration {...userAvg} />
 								)}
-								{perfLoading === true ? (
-									<div className='load'>LOADING</div>
-								) : (
-									<Performance {...userPerf} />
-								)}
+								{perfLoading === true ? '' : <Performance {...userPerf} />}
 
 								<Percentage {...userMain} />
 							</div>
