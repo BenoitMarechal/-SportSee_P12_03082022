@@ -12,7 +12,6 @@ let kindTranslation = {
 
 //export default function App() {
 const Performance = (props) => {
-	console.log(props);
 	let sortedData = props.data.map((element) => ({
 		value: element.value,
 		kind: kindTranslation[props.kind[element.kind]],

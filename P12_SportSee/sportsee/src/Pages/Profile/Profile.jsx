@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../Components/header/Header';
 import { useParams } from 'react-router';
 import localdata from '../../Assets/localdata.js';
@@ -11,15 +11,59 @@ import Percentage from '../../Components/Percentage/Percentage';
 import GlobalData from '../../Components/GlobalData/GlobalData';
 
 const Profile = () => {
+	let env = localStorage.environment;
+	console.log(env);
+	const [dataLoading, setDataLoading] = useState(true);
+	const [backMain, setBackMain] = useState({});
+
 	let { id } = useParams();
+	/////MOCK
 	let userId = parseInt(id);
-	/////////////////////////////
-	const userMain = localdata.USER_MAIN_DATA.find(
+
+	////BACK END
+	let url = 'http://localhost:3000/user/' + id;
+
+	useEffect(() => {
+		setDataLoading(true);
+		fetch(url)
+			.then((response) => response.json())
+			.then(({ data }) => {
+				setBackMain(data);
+				setDataLoading(false);
+			});
+	}, [url]);
+
+	console.log(dataLoading);
+	console.log('backMain');
+	console.log(backMain);
+
+	// useEffect(() => {
+	// 	fetch(url).then((response) =>
+	// 		response
+	// 			.json()
+	// 			.then(({ data }) => console.log(data))
+	// 			.catch((error) => console.log(error))
+	// 	);
+	// }, []);
+
+	////////////////////////////////////////////////////////
+	// const userMain =
+	// 	env === 'dev'
+	// 		? localdata.USER_MAIN_DATA.find((element) => element.id === userId)
+	// 		: getUserMain(url);
+	/////////////////////////////////////////////////////////////////
+
+	const mockedMain = localdata.USER_MAIN_DATA.find(
 		(element) => element.id === userId
 	);
+
+	const userMain = env === 'dev' ? mockedMain : backMain;
+
 	// console.log('userMain');
 	// console.log(userMain);
+
 	///////////////////////////
+
 	const userAvg = localdata.USER_AVERAGE_SESSIONS.find(
 		(element) => element.userId === userId
 	);
@@ -40,7 +84,12 @@ const Profile = () => {
 	// console.log(userPerf);
 	/////////////////////////////////////////
 
-	return (
+	return dataLoading === true && env === 'api' ? (
+		<div className='profile page'>
+			Chargement.... Si la page ne s'affiche pas, vérifiez que l'API est bien
+			lancée
+		</div>
+	) : (
 		<div className='profile page'>
 			<Header></Header>
 			<div className='container'>
