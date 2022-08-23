@@ -9,10 +9,23 @@ let kindTranslation = {
 	speed: 'Vitesse',
 	intensity: 'Intensité',
 };
+let revert4 = {
+	1: '5',
+	2: '6',
+	3: '1',
+	4: '2',
+	5: '3',
+	6: '4',
+};
 
 //export default function App() {
 const Performance = (props) => {
-	let sortedData = props.data.map((element) => ({
+	let revertData = props.data.map((element) => ({
+		value: element.value,
+		kind: revert4[element.kind],
+	}));
+
+	let sortedData = revertData.map((element) => ({
 		value: element.value,
 		kind: kindTranslation[props.kind[element.kind]],
 	}));
@@ -23,19 +36,16 @@ const Performance = (props) => {
 				cx={'50%'}
 				cy={'50%'}
 				outerRadius={90}
-				startAngle={-150}
-				endAngle={210}
-				// 			height: 263px;
-				// width: 258px;
-				// border-radius: 5px;
+				startAngle={90}
+				endAngle={450}
+				/////////////////
 				stroke={'white'}
 				width={258}
 				height={263}
-				//position={'absolute'}
 				data={sortedData}>
 				<PolarGrid radialLines={false} />
 				<PolarAngleAxis dataKey='kind' stroke={'white'} strokeWidth={0} />
-				{/* <PolarRadiusAxis stroke={'blue'} radius={120} /> */}
+
 				<Radar
 					name=''
 					dataKey='value'

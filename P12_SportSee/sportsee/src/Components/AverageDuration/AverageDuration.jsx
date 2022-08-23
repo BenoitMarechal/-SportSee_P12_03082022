@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import './averageDuration.scss';
 import {
 	LineChart,
@@ -7,9 +7,9 @@ import {
 	YAxis,
 	CartesianGrid,
 	Tooltip,
+	ReferenceArea,
 	//Legend,
 } from 'recharts';
-//import { useState } from 'react';
 
 let days = {
 	1: 'L',
@@ -34,34 +34,58 @@ const CustomTooltip = ({ active, payload }) => {
 	return null;
 };
 
-// export default function App() {
 const AverageDuration = (props) => {
+	const graphRef = useRef(null);
+	const [hover, setHover] = useState(null);
+
+	/**
+	 * Draw path svg to make hover box
+	 * @function ReferenceBands
+	 * @param {array} props send by ReferenceArea
+	 */
+	const ReferenceBands = (props) => {
+		const { x1 } = props;
+		const { offsetWidth } = graphRef.current;
+		const startPosition = x1;
+		return (
+			<path
+				fillOpacity={0.1}
+				d={`M ${startPosition}, 0 h ${offsetWidth} v ${
+					offsetWidth * 2
+				} h -${offsetWidth} Z`}></path>
+		);
+	};
+
+	/**
+	 * Set x1 of ReferenceArea when the mouse enter in the component
+	 * @function onMouseMoveLineChart
+	 * @param {object} e send by LineChart
+	 */
+	const onMouseMoveLineChart = (e) => {
+		setHover(e.activeCoordinate);
+	};
+
+	/**
+	 * Reset x1 of ReferenceArea when the mouse leave the component
+	 * @function onMouseLeaveLineChart
+	 * @param {object} e send by LineChart
+	 */
+	const onMouseLeaveLineChart = (e) => {
+		setHover(null);
+	};
 	let formatedProps = props.sessions.map((element) => ({
 		day: days[element.day],
 		sessionLength: element.sessionLength,
 	}));
 
-	//const [perc, setPerc] = useState(0);
-	//   const onMouseMove = hoveredData => {
-	//     // console.log(hoveredData);
-	//     if (hoveredData && hoveredData.activePayload) {
-	//       const hoveredX = hoveredData.activePayload[0].payload.name;
-	//       const index = data.findIndex(d => d.name === hoveredX);
-	//       const percentage = ((data.length - index - 1) * 100) / (data.length - 1);
-
-	//       setPerc(100 - percentage);
-	//     }
-	//   };
-
-	//   const onMouseOut = () => {
-	//     setPerc(0);
-	//   };
 	return (
-		<div className='sessionLength__container'>
+		<div className='sessionLength__container' ref={graphRef}>
 			<p className='sessionLength__container__title'>
 				Durée moyenne des sessions
 			</p>
 			<LineChart
+				onMouseMove={onMouseMoveLineChart}
+				onMouseLeave={onMouseLeaveLineChart}
 				fill='#FF0000'
 				width={258}
 				height={263}
@@ -112,6 +136,17 @@ const AverageDuration = (props) => {
 					}}
 					// strokeWidth={2}
 				/>
+				{hover && (
+					<ReferenceArea
+						x1={hover.x}
+						x2={7}
+						y1={-20}
+						y2={100}
+						fill='#000'
+						fillOpacity='0.1'
+						shape={<ReferenceBands />}
+					/>
+				)}
 				{/* <LineChart type='natural' dataKey='sessionLength' stroke='#FFFFFF' /> */}
 			</LineChart>
 		</div>
