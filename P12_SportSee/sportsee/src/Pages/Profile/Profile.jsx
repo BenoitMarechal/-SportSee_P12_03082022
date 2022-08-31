@@ -36,15 +36,16 @@ const Profile = () => {
 				setBackMain(data);
 				setDataLoading(false);
 			});
-	}, []);
+	}, [env, mainUrl]);
 	//////declaring mocked data
 	const mockedMain = localdata.USER_MAIN_DATA.find(
 		(element) => element.id === userId
 	);
 	//////chosing between mocked and api data
 	const userMain = env === 'dev' ? mockedMain : backMain;
-	// iterate new class
+	// iterate class
 	let CurrentUser = new User(userMain);
+	console.log(CurrentUser);
 	/////// ACTIVITY
 	///const
 	const [backActivity, setBackActivity] = useState({});
@@ -61,15 +62,15 @@ const Profile = () => {
 				setBackActivity(data);
 				setActivityLoading(false);
 			});
-	}, []);
+	}, [activityUrl, env]);
 
 	const mockedActivity = localdata.USER_ACTIVITY.find(
 		(element) => element.userId === userId
 	);
 	const userActivity = env === 'dev' ? mockedActivity : backActivity;
-	//console.log(userActivity);
+
 	let CurrentActivity = new Activity(userActivity);
-	//(CurrentActivity);
+	console.log(CurrentActivity);
 
 	////// AVERAGE DURATION
 	const [backAverage, setBackAverage] = useState({});
@@ -85,20 +86,20 @@ const Profile = () => {
 				setBackAverage(data);
 				setAverageLoading(false);
 			});
-	}, []);
+	}, [averageUrl, env]);
 
 	const mockedAvg = localdata.USER_AVERAGE_SESSIONS.find(
 		(element) => element.userId === userId
 	);
 	const userAvg = env === 'dev' ? mockedAvg : backAverage;
 	let CurrentDuration = new Duration(userAvg);
-	//console.log(userAvg);
+	console.log(CurrentDuration);
+
 	/////  PREFORMANCE
 	const [backPerf, setBackPerf] = useState({});
 	const [perfLoading, setPerfLoading] = useState(env === 'api' ? true : false);
 	let perfUrl = 'http://localhost:3000/user/' + id + '/performance';
 
-	/////////////////////////////////////////////////////////
 	//fecth perf
 	useEffect(() => {
 		if (env === 'api') setPerfLoading(true);
@@ -108,15 +109,15 @@ const Profile = () => {
 				setBackPerf(data);
 				setPerfLoading(false);
 			});
-	}, []);
+	}, [env, perfUrl]);
 
 	const mockedPerf = localdata.USER_PERFORMANCE.find(
 		(element) => element.userId === userId
 	);
 	const userPerf = env === 'dev' ? mockedPerf : backPerf;
-	//const userPerf = mockedPerf;
-	// console.log('userPerf');
+
 	let CurrentPerf = new Perf(userPerf);
+	console.log(CurrentPerf);
 	/////////////////////////////////////////
 	/// Iterating classes
 

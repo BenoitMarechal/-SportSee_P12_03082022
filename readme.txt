@@ -15,6 +15,8 @@ yarn 1.22.18
 		"react-scripts": "5.0.1",
 		"sass": "^1.54.1",
 
+Coded in Visual Studio Code
+
 *******Getting started
 ****Back end: 
 From home directory, open a terminal and run:
@@ -23,8 +25,9 @@ From home directory, open a terminal and run:
 
 then 
 IF RUNNING FOR THE FIRST TIME:
---> yarn
--->     yarn dev
+--> yarn  (installing yarn)
+then
+-->     yarn dev  (starting the server)
 
 Back end should be runnning on port 3000
 
@@ -32,7 +35,10 @@ Back end should be runnning on port 3000
 From home directory, open another  terminal and run:
 --> cd .\P12_SportSee\sportsee\
 then 
---> npm start
+IF RUNNING FOR THE FIRST TIME:
+--> npm install  (installing npm)
+then
+--> npm start (starts the app)
 
 App should start on port 3001.
 
