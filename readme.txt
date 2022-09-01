@@ -13,6 +13,7 @@ yarn 1.22.18
 		"react-router": "^6.3.0",
 		"react-router-dom": "^6.3.0",
 		"react-scripts": "5.0.1",
+		"recharts": "^2.1.13",
 		"sass": "^1.54.1",
 
 Coded in Visual Studio Code
