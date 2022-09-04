@@ -1,4 +1,3 @@
-////classe pour données
 import React, { useEffect, useState } from 'react';
 import Header from '../../Components/header/Header';
 import { useParams } from 'react-router';
@@ -45,7 +44,7 @@ const Profile = () => {
 	const userMain = env === 'dev' ? mockedMain : backMain;
 	// iterate class
 	let CurrentUser = new User(userMain);
-	console.log(CurrentUser);
+
 	/////// ACTIVITY
 	///const
 	const [backActivity, setBackActivity] = useState({});
@@ -70,7 +69,6 @@ const Profile = () => {
 	const userActivity = env === 'dev' ? mockedActivity : backActivity;
 
 	let CurrentActivity = new Activity(userActivity);
-	console.log(CurrentActivity);
 
 	////// AVERAGE DURATION
 	const [backAverage, setBackAverage] = useState({});
@@ -93,9 +91,8 @@ const Profile = () => {
 	);
 	const userAvg = env === 'dev' ? mockedAvg : backAverage;
 	let CurrentDuration = new Duration(userAvg);
-	console.log(CurrentDuration);
 
-	/////  PREFORMANCE
+	/////  PERFORMANCE
 	const [backPerf, setBackPerf] = useState({});
 	const [perfLoading, setPerfLoading] = useState(env === 'api' ? true : false);
 	let perfUrl = 'http://localhost:3000/user/' + id + '/performance';
@@ -117,7 +114,6 @@ const Profile = () => {
 	const userPerf = env === 'dev' ? mockedPerf : backPerf;
 
 	let CurrentPerf = new Perf(userPerf);
-	console.log(CurrentPerf);
 	/////////////////////////////////////////
 	/// Iterating classes
 

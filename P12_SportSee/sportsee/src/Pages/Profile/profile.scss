@@ -15,7 +15,14 @@ nav {
 }
 
 .page {
-	height: 100%;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	//@at-root: 100px;
 }
 
 .recharts-bar-rectangle {
@@ -28,17 +35,22 @@ nav {
 
 .container {
 	display: flex;
-	position: absolute;
-	left: 0;
-	right: 0;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	// left: 0;
+	// right: 0;
 	bottom: 0;
-	top: 90px;
+	//top: 90px;
+	//margin-bottom: 50px;
 	//height: 100%;
+	border: 1px solid blue;
 	&__content {
 		display: flex;
 		width: 100%;
 		flex-direction: column;
 		padding: 0 50px;
+		margin-bottom: 50px;
 
 		&__landing {
 			margin-left: 20px;
