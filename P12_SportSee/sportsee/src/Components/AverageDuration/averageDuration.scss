@@ -15,17 +15,12 @@
 }
 .custom-tooltip-duration {
 	background-color: white;
-	//opacity: 0.5;
 	position: relative;
-	//position: absolute;
 	top: 0;
 	bottom: 0;
-	//left: 50px;
 	right: 50px;
 	color: black;
 	font-size: 14px;
-	// height: 25px;
-	// width: 39px;
 	display: flex;
 	width: 100%;
 	height: 100%;
@@ -39,15 +34,3 @@
 	width: 100%;
 	height: 100%;
 }
-
-// .custom-tooltip-duration::after {
-// 	position: relative;
-// 	content: '';
-// 	left: 00px;
-// 	top: 0px;
-// 	bottom: 0px;
-// 	height: 200px;
-// 	width: 100px;
-// 	background-color: blue;
-// 	opacity: 0.3;
-// }

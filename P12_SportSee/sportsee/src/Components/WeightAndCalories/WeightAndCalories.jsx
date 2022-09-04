@@ -24,7 +24,6 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 const WeightAndCalories = (props) => {
-	//console.log(props);
 	let formatedProps = props.sessions.map((session) => ({
 		day: session.day.toString().slice(-1),
 		kilogram: session.kilogram,
@@ -50,8 +49,6 @@ const WeightAndCalories = (props) => {
 					dataKey='day'
 					padding={{ left: -50, right: -51 }}
 					tickLine={false}
-					//strokeDasharray='2 2'
-					//axisLine={'1px solid blue'}
 					stroke='#9B9EAC'
 				/>
 				<YAxis yAxisId='right' orientation='left' color='#282D38' hide={true} />
@@ -65,10 +62,8 @@ const WeightAndCalories = (props) => {
 					axisLine={false}
 					minTickGap={'0'}
 					tickSize={45}
-					// interval={1}
 					allowDecimals={false}
 				/>
-				{/* <Tooltip /> */}
 				<Tooltip content={<CustomTooltip />} />
 				<Legend
 					align='right'

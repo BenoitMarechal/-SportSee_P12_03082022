@@ -15,7 +15,8 @@
 	position: relative;
 	top: 65px;
 	margin-left: 20px;
-	margin-top: 0;
+	margin-top: 0px;
+	margin-bottom: 15px;
 }
 
 .custom-tooltip:focus-visible {
@@ -36,7 +37,3 @@
 	color: green;
 	background-color: yellow;
 }
-// .recharts-legend-wrapper {
-// 	top: 0px !important;
-// 	right: 0px !important;
-// }

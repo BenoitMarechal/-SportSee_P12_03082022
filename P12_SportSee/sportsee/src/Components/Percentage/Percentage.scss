@@ -1,5 +1,4 @@
 .pieChart__container {
-	//position: relative;
 	height: 263px;
 	width: 258px;
 	border-radius: 5px;
@@ -17,18 +16,13 @@
 
 	&__text {
 		position: relative;
-		// top: 50%;
 		bottom: 170px;
-
 		color: rgba(40, 45, 48, 1);
 		font-size: 26px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		width: auto;
-
-		&__score {
-		}
 		&__small {
 			color: rgba(116, 121, 140, 1);
 			font-size: 16px;

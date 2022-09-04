@@ -18,7 +18,6 @@ let revert4 = {
 	6: '4',
 };
 
-//export default function App() {
 const Performance = (props) => {
 	let revertData = props.data.map((element) => ({
 		value: element.value,
