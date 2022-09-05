@@ -16,7 +16,7 @@ const Percentage = (props) => {
 	];
 
 	return (
-		<div className='pieChart__container'>
+		<div className='pieChart__container greyBg'>
 			<div className='pieChart__container__title'>Score</div>
 
 			<PieChart width={258} height={263} top={0}>

@@ -14,6 +14,9 @@ import Activity from '../../Components/classes/Activity.js';
 import Duration from '../../Components/classes/Duration';
 import Perf from '../../Components/classes/Perf';
 
+//documenter avec proptypes
+//readme md
+
 const Profile = () => {
 	/////// Environment parameters
 	let env = localStorage.environment;

@@ -30,3 +30,14 @@ body {
 .hidden {
 	display: none;
 }
+
+@mixin desktop-1300 {
+	@media screen and (max-width: 1300px) {
+		@content;
+	}
+}
+
+.greyBg {
+	background-color: rgb(251, 251, 251);
+	border-radius: 5px;
+}

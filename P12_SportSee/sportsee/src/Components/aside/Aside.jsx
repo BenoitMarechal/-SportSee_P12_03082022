@@ -23,18 +23,6 @@ const Aside = () => {
 						</div>
 					);
 				})}
-				{/* <Link to={''}>
-					<img src={yoga} alt='yoga' className='aside__container__logo' />
-				</Link>
-				<img src={yoga} alt='yoga' className='aside__container__logo' />
-				<img src={yoga} alt='yoga' className='aside__container__logo' />
-				<img src={swim} alt='swimming' className='aside__container__logo' />
-				<img src={cycle} alt='cycling' className='aside__container__logo' />
-				<img
-					src={weight}
-					alt='weightlifting'
-					className='aside__container__logo'
-				/>{' '} */}
 			</div>
 
 			<div className='aside__copyright'>Copyright, Sportsee 2020</div>

@@ -45,7 +45,8 @@ const WeightAndCalories = (props) => {
 					right: 30,
 					left: 20,
 					bottom: 5,
-				}}>
+				}}
+				className='greyBg'>
 				<div>Activité quotidienne</div>
 				<CartesianGrid horizontal={'true'} vertical='' strokeDasharray='2 2' />
 				<XAxis

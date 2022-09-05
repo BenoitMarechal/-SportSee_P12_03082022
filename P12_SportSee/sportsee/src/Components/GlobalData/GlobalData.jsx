@@ -36,7 +36,7 @@ const GlobalData = (props) => {
 		<div className='container__content__graphics__globalData'>
 			{formatedProps.map((nutrient) => {
 				return (
-					<div key={nutrient.label} className='keyData'>
+					<div key={nutrient.label} className='keyData greyBg'>
 						<img
 							className='keyData__img'
 							src={nutrient.icon}

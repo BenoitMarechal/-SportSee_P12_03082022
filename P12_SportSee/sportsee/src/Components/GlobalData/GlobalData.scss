@@ -1,9 +1,15 @@
-.container__content__graphics__globalData {
-	margin-right: 20px;
-}
-
+@import '../../generic.scss';
 .keyData {
 	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 258px;
+	height: 124px;
+
+	@include desktop-1300 {
+		width: 180px;
+		height: 90px;
+	}
 
 	&__img {
 		height: 60px;
