@@ -8,10 +8,18 @@ const Header = () => {
 		<header className='white-on-black'>
 			<nav>
 				<img src={logo} alt='SportSee logo' />
-				<NavLink to='/'>Accueil</NavLink>
-				<NavLink to='/'>Profil</NavLink>
-				<NavLink to='/'>Réglages</NavLink>
-				<NavLink to='/'>Communauté</NavLink>
+				<NavLink className={'navLink'} to='/'>
+					Accueil
+				</NavLink>
+				<NavLink className={'navLink'} to='/'>
+					Profil
+				</NavLink>
+				<NavLink className={'navLink'} to='/'>
+					Réglages
+				</NavLink>
+				<NavLink className={'navLink'} to='/'>
+					Communauté
+				</NavLink>
 			</nav>
 		</header>
 	);
