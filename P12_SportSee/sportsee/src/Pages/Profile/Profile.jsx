@@ -9,11 +9,12 @@ import Performance from '../../Components/Performance/Performance';
 import AverageDuration from '../../Components/AverageDuration/AverageDuration';
 import Percentage from '../../Components/Percentage/Percentage';
 import GlobalData from '../../Components/GlobalData/GlobalData';
-import User from '../../Components/classes/User.js';
+//import User from '../../Components/classes/User.js';
 import Activity from '../../Components/classes/Activity.js';
 import Duration from '../../Components/classes/Duration';
 import Perf from '../../Components/classes/Perf';
-import { selectMainSource } from '../../Assets/fetchApi';
+import { selectMainSource } from '../../Assets/fetches/fetchMain';
+import Main from '../../Components/classes/Main';
 
 //documenter avec proptypes
 //readme md
@@ -24,6 +25,19 @@ const Profile = () => {
 	let { id } = useParams();
 	let userId = parseInt(id);
 	//fetchMain(id);
+	const [main, setMain] = useState({});
+	const [mainLoading, setMainLoading] = useState(true);
+	useEffect(() => {
+		//setMainLoading(true);
+		//console.log(mainLoading);
+		selectMainSource(id, setMain, env, setMainLoading);
+		//setMainLoading(false);
+		console.log(mainLoading);
+	}, []);
+	//console.log(main);
+	let yup = main;
+	//console.log('yup');
+	//console.log(yup);
 
 	////////////////////////////  Fetching
 	////////////// MAIN
@@ -34,12 +48,6 @@ const Profile = () => {
 	let mainUrl = 'http://localhost:3000/user/' + id;
 	//////fetching (api)
 	//////////////////////////////////////////////////////////////////
-	useEffect(() => {
-		setDataLoading(true);
-		selectMainSource(userId, setApiMain, env);
-		setDataLoading(false);
-	}, []);
-	console.log(apiMain);
 
 	useEffect(() => {
 		if (env === 'api') setDataLoading(true);
@@ -61,7 +69,8 @@ const Profile = () => {
 	//let userMain = apiMain;
 
 	// iterate class
-	let CurrentUser = new User(userMain);
+	let CurrentUser = yup;
+	//let CurrentUser = new Main(userMain);
 	console.log(CurrentUser);
 
 	/////// ACTIVITY
@@ -80,7 +89,7 @@ const Profile = () => {
 				setBackActivity(data);
 				setActivityLoading(false);
 			});
-	}, [activityUrl, env]);
+	}, []);
 
 	const mockedActivity = localdata.USER_ACTIVITY.find(
 		(element) => element.userId === userId
@@ -136,7 +145,7 @@ const Profile = () => {
 	/////////////////////////////////////////
 	/// Iterating classes
 
-	return dataLoading === true ? (
+	return mainLoading === true ? (
 		<div className='profile page'>
 			<Header></Header>
 			<div className='container'>

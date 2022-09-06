@@ -5,17 +5,6 @@ const backgroundColor = '##FF08';
 const COLORS = ['#FF0000', backgroundColor];
 
 const Percentage = (user) => {
-	//let score = props.todayScore ? props.todayScore : props.score * 100;
-	//let score = user.score;
-	//let formatedProps = user.percentage;
-	// let formatedProps = [
-	// 	{
-	// 		name: 'goals',
-	// 		value: score,
-	// 	},
-	// 	{ name: 'scale', value: 100 - score },
-	// ];
-
 	return (
 		<div className='pieChart__container greyBg'>
 			<div className='pieChart__container__title'>Score</div>

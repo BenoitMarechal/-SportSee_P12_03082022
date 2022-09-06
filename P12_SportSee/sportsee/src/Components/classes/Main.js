@@ -5,7 +5,7 @@
  * @param{number} score OR todayScore - daily score of user
  */
 
-export default class User {
+export default class Main {
 	constructor(user) {
 		this.id = user.id;
 		this.keyData = user.keyData;
