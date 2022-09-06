@@ -24,15 +24,15 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 const WeightAndCalories = (props) => {
-	console.log('props');
-	console.log(props);
+	//console.log('props');
+	//console.log(props);
 	let formatedProps = props.sessions.map((session) => ({
 		day: session.day.toString().slice(-1),
 		kilogram: session.kilogram,
 		calories: session.calories,
 	}));
-	console.log('formatedProps');
-	console.log(formatedProps);
+	//console.log('formatedProps');
+	//console.log(formatedProps);
 	return (
 		<div>
 			<h2 className='weight-and-calories__h2'>Activité quotidienne</h2>

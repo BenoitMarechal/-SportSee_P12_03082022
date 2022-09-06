@@ -4,16 +4,17 @@ import { PieChart, Pie, Cell } from 'recharts';
 const backgroundColor = '##FF08';
 const COLORS = ['#FF0000', backgroundColor];
 
-const Percentage = (props) => {
-	let score = props.todayScore ? props.todayScore * 100 : props.score * 100;
-
-	let formatedProps = [
-		{
-			name: 'goals',
-			value: score,
-		},
-		{ name: 'scale', value: 100 - score },
-	];
+const Percentage = (user) => {
+	//let score = props.todayScore ? props.todayScore : props.score * 100;
+	//let score = user.score;
+	//let formatedProps = user.percentage;
+	// let formatedProps = [
+	// 	{
+	// 		name: 'goals',
+	// 		value: score,
+	// 	},
+	// 	{ name: 'scale', value: 100 - score },
+	// ];
 
 	return (
 		<div className='pieChart__container greyBg'>
@@ -21,7 +22,7 @@ const Percentage = (props) => {
 
 			<PieChart width={258} height={263} top={0}>
 				<Pie
-					data={formatedProps}
+					data={user.percentage}
 					cx={'50%'}
 					cy={'50%'}
 					innerRadius={80}
@@ -32,7 +33,7 @@ const Percentage = (props) => {
 					cornerRadius={5}
 					paddingAngle={0}
 					dataKey='value'>
-					{formatedProps.map((entry, index) => (
+					{user.percentage.map((entry, index) => (
 						<Cell
 							key={`cell-${index}`}
 							fill={index === 0 ? COLORS[index % COLORS.length] : 'none'}
@@ -41,7 +42,7 @@ const Percentage = (props) => {
 				</Pie>
 			</PieChart>
 			<div className='pieChart__container__text'>
-				<div className='pieChart__container__text__score'>{score}%</div>
+				<div className='pieChart__container__text__score'>{user.score}%</div>
 
 				<span className='pieChart__container__text__small'>
 					de votre objectif

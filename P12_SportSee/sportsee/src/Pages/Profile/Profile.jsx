@@ -13,6 +13,7 @@ import User from '../../Components/classes/User.js';
 import Activity from '../../Components/classes/Activity.js';
 import Duration from '../../Components/classes/Duration';
 import Perf from '../../Components/classes/Perf';
+import { selectMainSource } from '../../Assets/fetchApi';
 
 //documenter avec proptypes
 //readme md
@@ -22,14 +23,24 @@ const Profile = () => {
 	let env = localStorage.environment;
 	let { id } = useParams();
 	let userId = parseInt(id);
+	//fetchMain(id);
 
 	////////////////////////////  Fetching
 	////////////// MAIN
 	////////declaring constants
 	const [backMain, setBackMain] = useState({});
+	const [apiMain, setApiMain] = useState(null);
 	const [dataLoading, setDataLoading] = useState(env === 'api' ? true : false);
 	let mainUrl = 'http://localhost:3000/user/' + id;
 	//////fetching (api)
+	//////////////////////////////////////////////////////////////////
+	useEffect(() => {
+		setDataLoading(true);
+		selectMainSource(userId, setApiMain, env);
+		setDataLoading(false);
+	}, []);
+	console.log(apiMain);
+
 	useEffect(() => {
 		if (env === 'api') setDataLoading(true);
 		fetch(mainUrl)
@@ -39,14 +50,19 @@ const Profile = () => {
 				setDataLoading(false);
 			});
 	}, [env, mainUrl]);
+	///////////////////////////////////////////////////////////////////////////////
 	//////declaring mocked data
 	const mockedMain = localdata.USER_MAIN_DATA.find(
 		(element) => element.id === userId
 	);
 	//////chosing between mocked and api data
 	const userMain = env === 'dev' ? mockedMain : backMain;
+	//console.log(userMain);
+	//let userMain = apiMain;
+
 	// iterate class
 	let CurrentUser = new User(userMain);
+	console.log(CurrentUser);
 
 	/////// ACTIVITY
 	///const
@@ -147,7 +163,7 @@ const Profile = () => {
 							<span className='red'>{CurrentUser.userInfos.firstName}</span>
 						</h1>
 						<p className='container__content__landing__txt'>
-							{CurrentUser.todayScore > 0.25 || CurrentUser.score > 0.25
+							{CurrentUser.todayScore > 25 || CurrentUser.score > 25
 								? 'Félicitation! Vous avez explosé vos objectifs hier! 👏 '
 								: 'Vous êtes un peu en dessous de vos objectifs, encore un effort! ✌ '}
 						</p>
