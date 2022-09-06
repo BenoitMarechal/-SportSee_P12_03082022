@@ -21,14 +21,40 @@ async function fetchMain(id, setMain) {
 	}
 }
 
-export async function selectMainSource(id, setMain, env, setMainLoading) {
+// export async function selectMainSource(id, setMain, env, setMainLoading) {
+// 	console.log(env);
+// 	setMainLoading(true);
+
+// 	if (env === 'dev') {
+// 		getMockedMain(id, setMain);
+// 	} else {
+// 		await fetchMain(id, setMain);
+// 	}
+// 	setMainLoading(false);
+// }
+export async function selectMainSource(
+	id,
+	setMain,
+	env,
+	setMainLoading,
+	setErrMain
+) {
 	console.log(env);
 	setMainLoading(true);
 
 	if (env === 'dev') {
 		getMockedMain(id, setMain);
 	} else {
-		await fetchMain(id, setMain);
+		try {
+			const response = await fetch('http://localhost:3000/user/' + id);
+			const result = await response.json();
+			setMain(new Main(result.data));
+		} catch (err) {
+			console.log(err);
+			setErrMain(err);
+		} finally {
+			console.log('fetch completed');
+		}
 	}
 	setMainLoading(false);
 }

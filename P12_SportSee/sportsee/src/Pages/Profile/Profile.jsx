@@ -27,10 +27,11 @@ const Profile = () => {
 	//fetchMain(id);
 	const [main, setMain] = useState({});
 	const [mainLoading, setMainLoading] = useState(true);
+	const [errMain, setErrMain] = useState(false);
 	useEffect(() => {
 		//setMainLoading(true);
 		//console.log(mainLoading);
-		selectMainSource(id, setMain, env, setMainLoading);
+		selectMainSource(id, setMain, env, setMainLoading, setErrMain);
 		//setMainLoading(false);
 		console.log(mainLoading);
 	}, []);
@@ -38,11 +39,13 @@ const Profile = () => {
 	let yup = main;
 	//console.log('yup');
 	//console.log(yup);
+	console.log(errMain);
 
 	////////////////////////////  Fetching
 	////////////// MAIN
 	////////declaring constants
 	const [backMain, setBackMain] = useState({});
+
 	const [apiMain, setApiMain] = useState(null);
 	const [dataLoading, setDataLoading] = useState(env === 'api' ? true : false);
 	let mainUrl = 'http://localhost:3000/user/' + id;
@@ -144,8 +147,8 @@ const Profile = () => {
 	let CurrentPerf = new Perf(userPerf);
 	/////////////////////////////////////////
 	/// Iterating classes
-
-	return mainLoading === true ? (
+	//console.log(errMain);
+	return mainLoading === true || errMain !== false ? (
 		<div className='profile page'>
 			<Header></Header>
 			<div className='container'>
@@ -156,6 +159,7 @@ const Profile = () => {
 							Chargement... si la page ne s'affiche pas, veuillez vérifier la
 							disponibilité de l'API ou utiliser les données mockées
 						</h1>
+						<p>Error status: {errMain.toString()}</p>
 					</div>
 				</div>
 			</div>
