@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../Components/header/Header';
 import { useParams } from 'react-router';
-import localdata from '../../Assets/localdata.js';
 import Aside from '../../Components/aside/Aside';
 import './profile.scss';
 import WeightAndCalories from '../../Components/WeightAndCalories/WeightAndCalories';
@@ -9,12 +8,10 @@ import Performance from '../../Components/Performance/Performance';
 import AverageDuration from '../../Components/AverageDuration/AverageDuration';
 import Percentage from '../../Components/Percentage/Percentage';
 import GlobalData from '../../Components/GlobalData/GlobalData';
-//import User from '../../Components/classes/User.js';
-import Activity from '../../Components/classes/Activity.js';
-import Duration from '../../Components/classes/Duration';
-import Perf from '../../Components/classes/Perf';
 import { selectMainSource } from '../../Assets/fetches/fetchMain';
-import Main from '../../Components/classes/Main';
+import { selectActivitySource } from '../../Assets/fetches/fetchActivity';
+import { selectDurationSource } from '../../Assets/fetches/fetchDuration';
+import { selectPerformanceSource } from '../../Assets/fetches/fetchPerformance';
 
 //documenter avec proptypes
 //readme md
@@ -23,131 +20,59 @@ const Profile = () => {
 	/////// Environment parameters
 	let env = localStorage.environment;
 	let { id } = useParams();
-	let userId = parseInt(id);
-	//fetchMain(id);
+	//////////////////////////
+	//fetching Main data
 	const [main, setMain] = useState({});
 	const [mainLoading, setMainLoading] = useState(true);
 	const [errMain, setErrMain] = useState(false);
 	useEffect(() => {
-		//setMainLoading(true);
-		//console.log(mainLoading);
 		selectMainSource(id, setMain, env, setMainLoading, setErrMain);
-		//setMainLoading(false);
-		console.log(mainLoading);
 	}, []);
-	//console.log(main);
-	let yup = main;
-	//console.log('yup');
-	//console.log(yup);
-	console.log(errMain);
-
-	////////////////////////////  Fetching
-	////////////// MAIN
-	////////declaring constants
-	const [backMain, setBackMain] = useState({});
-
-	const [apiMain, setApiMain] = useState(null);
-	const [dataLoading, setDataLoading] = useState(env === 'api' ? true : false);
-	let mainUrl = 'http://localhost:3000/user/' + id;
-	//////fetching (api)
-	//////////////////////////////////////////////////////////////////
-
+	//////////////////////////
+	//fetching activity data
+	const [activity, setActivity] = useState({});
+	const [activityLoading, setActivityLoading] = useState(false);
+	const [errActivity, setErrActivity] = useState(false);
 	useEffect(() => {
-		if (env === 'api') setDataLoading(true);
-		fetch(mainUrl)
-			.then((response) => response.json())
-			.then(({ data }) => {
-				setBackMain(data);
-				setDataLoading(false);
-			});
-	}, [env, mainUrl]);
-	///////////////////////////////////////////////////////////////////////////////
-	//////declaring mocked data
-	const mockedMain = localdata.USER_MAIN_DATA.find(
-		(element) => element.id === userId
-	);
-	//////chosing between mocked and api data
-	const userMain = env === 'dev' ? mockedMain : backMain;
-	//console.log(userMain);
-	//let userMain = apiMain;
-
-	// iterate class
-	let CurrentUser = yup;
-	//let CurrentUser = new Main(userMain);
-	console.log(CurrentUser);
-
-	/////// ACTIVITY
-	///const
-	const [backActivity, setBackActivity] = useState({});
-	const [activityLoading, setActivityLoading] = useState(
-		env === 'api' ? true : false
-	);
-	const activityUrl = 'http://localhost:3000/user/' + id + '/activity';
-	/////fetch
-	useEffect(() => {
-		if (env === 'api') setActivityLoading(true);
-		fetch(activityUrl)
-			.then((response) => response.json())
-			.then(({ data }) => {
-				setBackActivity(data);
-				setActivityLoading(false);
-			});
+		selectActivitySource(
+			id,
+			setActivity,
+			env,
+			setActivityLoading,
+			setErrActivity
+		);
 	}, []);
-
-	const mockedActivity = localdata.USER_ACTIVITY.find(
-		(element) => element.userId === userId
-	);
-	const userActivity = env === 'dev' ? mockedActivity : backActivity;
-
-	let CurrentActivity = new Activity(userActivity);
 
 	////// AVERAGE DURATION
-	const [backAverage, setBackAverage] = useState({});
-	const [averageLoading, setAverageLoading] = useState(
-		env === 'api' ? true : false
-	);
-	let averageUrl = 'http://localhost:3000/user/' + id + '/average-sessions';
+	//fetching Duration data
+	const [duration, setDuration] = useState({});
+	const [durationLoading, setDurationLoading] = useState(false);
+	const [errDuration, setErrDuration] = useState(false);
 	useEffect(() => {
-		if (env === 'api') setAverageLoading(true);
-		fetch(averageUrl)
-			.then((response) => response.json())
-			.then(({ data }) => {
-				setBackAverage(data);
-				setAverageLoading(false);
-			});
-	}, [averageUrl, env]);
-
-	const mockedAvg = localdata.USER_AVERAGE_SESSIONS.find(
-		(element) => element.userId === userId
-	);
-	const userAvg = env === 'dev' ? mockedAvg : backAverage;
-	let CurrentDuration = new Duration(userAvg);
-
-	/////  PERFORMANCE
-	const [backPerf, setBackPerf] = useState({});
-	const [perfLoading, setPerfLoading] = useState(env === 'api' ? true : false);
-	let perfUrl = 'http://localhost:3000/user/' + id + '/performance';
-
-	//fecth perf
+		selectDurationSource(
+			id,
+			setDuration,
+			env,
+			setDurationLoading,
+			setErrDuration
+		);
+	}, []);
+	////////////////////////
+	////// PERFORMANCE
+	//fetching Performance data
+	const [performance, setPerformance] = useState({});
+	const [performanceLoading, setPerformanceLoading] = useState(false);
+	const [errPerformance, setErrPerformance] = useState(false);
 	useEffect(() => {
-		if (env === 'api') setPerfLoading(true);
-		fetch(perfUrl)
-			.then((response) => response.json())
-			.then(({ data }) => {
-				setBackPerf(data);
-				setPerfLoading(false);
-			});
-	}, [env, perfUrl]);
+		selectPerformanceSource(
+			id,
+			setPerformance,
+			env,
+			setPerformanceLoading,
+			setErrPerformance
+		);
+	}, []);
 
-	const mockedPerf = localdata.USER_PERFORMANCE.find(
-		(element) => element.userId === userId
-	);
-	const userPerf = env === 'dev' ? mockedPerf : backPerf;
-
-	let CurrentPerf = new Perf(userPerf);
-	/////////////////////////////////////////
-	/// Iterating classes
-	//console.log(errMain);
 	return mainLoading === true || errMain !== false ? (
 		<div className='profile page'>
 			<Header></Header>
@@ -172,11 +97,10 @@ const Profile = () => {
 				<div className='container__content'>
 					<div className='container__content__landing'>
 						<h1 className='container__content__landing__h1'>
-							Bonjour{' '}
-							<span className='red'>{CurrentUser.userInfos.firstName}</span>
+							Bonjour <span className='red'>{main.userInfos.firstName}</span>
 						</h1>
 						<p className='container__content__landing__txt'>
-							{CurrentUser.todayScore > 25 || CurrentUser.score > 25
+							{main.todayScore > 25 || main.score > 25
 								? 'Félicitation! Vous avez explosé vos objectifs hier! 👏 '
 								: 'Vous êtes un peu en dessous de vos objectifs, encore un effort! ✌ '}
 						</p>
@@ -187,21 +111,25 @@ const Profile = () => {
 								{activityLoading === true ? (
 									''
 								) : (
-									<WeightAndCalories {...CurrentActivity} />
+									<WeightAndCalories {...activity} />
 								)}
 							</div>
 							<div className='container__content__graphics__charts__bottom'>
-								{averageLoading === true ? (
+								{durationLoading === true ? (
 									''
 								) : (
-									<AverageDuration {...CurrentDuration} />
+									<AverageDuration {...duration} />
 								)}
-								{perfLoading === true ? '' : <Performance {...CurrentPerf} />}
+								{performanceLoading === true ? (
+									''
+								) : (
+									<Performance {...performance} />
+								)}
 
-								<Percentage {...CurrentUser} />
+								<Percentage {...main} />
 							</div>
 						</div>
-						<GlobalData {...CurrentUser} />
+						<GlobalData {...main} />
 					</div>
 				</div>
 			</div>
