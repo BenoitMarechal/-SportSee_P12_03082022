@@ -1,40 +1,12 @@
 import React from 'react';
 import './GlobalData.scss';
-import caloriesIcon from '../../Assets/icons/nutrition/calories-icon.png';
-import carbsIcon from '../../Assets/icons/nutrition/carbs-icon.png';
-import fatIcon from '../../Assets/icons/nutrition/fat-icon.png';
-import proteinIcon from '../../Assets/icons/nutrition/protein-icon.png';
 
-const GlobalData = (props) => {
-	let formatedProps = [
-		{
-			icon: caloriesIcon,
-			unit: 'kCal',
-			label: 'Calories',
-			amount: props.keyData.calorieCount,
-		},
-		{
-			icon: proteinIcon,
-			unit: 'g',
-			label: 'Proteines',
-			amount: props.keyData.proteinCount,
-		},
-		{
-			icon: carbsIcon,
-			unit: 'g',
-			label: 'Glucides',
-			amount: props.keyData.carbohydrateCount,
-		},
-		{
-			icon: fatIcon,
-			unit: 'g',
-			label: 'Lipides',
-			amount: props.keyData.lipidCount,
-		},
-	];
+import PropTypes from 'prop-types';
+
+const GlobalData = (main) => {
 	return (
 		<div className='container__content__graphics__globalData'>
-			{formatedProps.map((nutrient) => {
+			{main.keyData.map((nutrient) => {
 				return (
 					<div key={nutrient.label} className='keyData greyBg'>
 						<img
@@ -54,6 +26,10 @@ const GlobalData = (props) => {
 			})}
 		</div>
 	);
+};
+
+GlobalData.propTypes = {
+	main: PropTypes.object,
 };
 
 export default GlobalData;

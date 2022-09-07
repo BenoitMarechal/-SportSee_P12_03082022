@@ -6,6 +6,10 @@
 export default class Activity {
 	constructor(activity) {
 		this.userId = activity.userId;
-		this.sessions = activity.sessions;
+		this.sessions = activity.sessions.map((session) => ({
+			day: session.day.toString().slice(-1),
+			kilogram: session.kilogram,
+			calories: session.calories,
+		}));
 	}
 }

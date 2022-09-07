@@ -1,34 +1,8 @@
 import React from 'react';
 import './Performance.scss';
+import PropTypes from 'prop-types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
-let kindTranslation = {
-	cardio: 'Cardio',
-	energy: 'Energie',
-	endurance: 'Endurance',
-	strength: 'Force',
-	speed: 'Vitesse',
-	intensity: 'Intensité',
-};
-let revert4 = {
-	1: '5',
-	2: '6',
-	3: '1',
-	4: '2',
-	5: '3',
-	6: '4',
-};
-
-const Performance = (props) => {
-	let revertData = props.data.map((element) => ({
-		value: element.value,
-		kind: revert4[element.kind],
-	}));
-
-	let sortedData = revertData.map((element) => ({
-		value: element.value,
-		kind: kindTranslation[props.kind[element.kind]],
-	}));
-
+const Performance = (performance) => {
 	return (
 		<div className='performanceContainer'>
 			<RadarChart
@@ -41,10 +15,9 @@ const Performance = (props) => {
 				stroke={'white'}
 				width={258}
 				height={263}
-				data={sortedData}>
+				data={performance.data}>
 				<PolarGrid radialLines={false} />
 				<PolarAngleAxis dataKey='kind' stroke={'white'} strokeWidth={0} />
-
 				<Radar
 					name=''
 					dataKey='value'
@@ -54,5 +27,8 @@ const Performance = (props) => {
 			</RadarChart>
 		</div>
 	);
+};
+Performance.propTypes = {
+	performance: PropTypes.object,
 };
 export default Performance;

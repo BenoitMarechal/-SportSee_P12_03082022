@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../Components/header/Header';
 import { useParams } from 'react-router';
-import Aside from '../../Components/aside/Aside';
 import './profile.scss';
+import Aside from '../../Components/aside/Aside';
+
 import WeightAndCalories from '../../Components/WeightAndCalories/WeightAndCalories';
 import Performance from '../../Components/Performance/Performance';
 import AverageDuration from '../../Components/AverageDuration/AverageDuration';

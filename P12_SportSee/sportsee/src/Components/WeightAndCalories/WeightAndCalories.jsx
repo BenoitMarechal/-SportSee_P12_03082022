@@ -1,6 +1,6 @@
 import React from 'react';
 import './WeightAndCalories.scss';
-
+import PropTypes from 'prop-types';
 import {
 	BarChart,
 	Bar,
@@ -19,27 +19,22 @@ const CustomTooltip = ({ active, payload }) => {
 			</div>
 		);
 	}
-
 	return null;
 };
 
-const WeightAndCalories = (props) => {
-	//console.log('props');
-	//console.log(props);
-	let formatedProps = props.sessions.map((session) => ({
-		day: session.day.toString().slice(-1),
-		kilogram: session.kilogram,
-		calories: session.calories,
-	}));
-	//console.log('formatedProps');
-	//console.log(formatedProps);
+CustomTooltip.propTypes = {
+	active: PropTypes.bool,
+	payload: PropTypes.array,
+};
+
+const WeightAndCalories = (activity) => {
 	return (
 		<div>
 			<h2 className='weight-and-calories__h2'>Activité quotidienne</h2>
 			<BarChart
 				width={835}
 				height={350}
-				data={formatedProps}
+				data={activity.sessions}
 				margin={{
 					top: 20,
 					right: 30,
@@ -94,6 +89,10 @@ const WeightAndCalories = (props) => {
 			</BarChart>
 		</div>
 	);
+};
+
+WeightAndCalories.propTypes = {
+	activity: PropTypes.object,
 };
 
 export default WeightAndCalories;

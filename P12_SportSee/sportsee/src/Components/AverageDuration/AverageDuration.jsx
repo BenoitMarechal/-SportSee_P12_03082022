@@ -8,16 +8,7 @@ import {
 	CartesianGrid,
 	Tooltip,
 } from 'recharts';
-
-let days = {
-	1: 'L',
-	2: 'M',
-	3: 'M',
-	4: 'J',
-	5: 'V',
-	6: 'S',
-	7: 'D',
-};
+import PropTypes from 'prop-types';
 
 const CustomTooltip = ({ active, payload }) => {
 	if (active && payload && payload.length) {
@@ -30,13 +21,12 @@ const CustomTooltip = ({ active, payload }) => {
 
 	return null;
 };
+CustomTooltip.propTypes = {
+	active: PropTypes.bool,
+	payload: PropTypes.array,
+};
 
-const AverageDuration = (props) => {
-	let formatedProps = props.sessions.map((element) => ({
-		day: days[element.day],
-		sessionLength: element.sessionLength,
-	}));
-
+const AverageDuration = (duration) => {
 	return (
 		<div className='sessionLength__container'>
 			<p className='sessionLength__container__title'>
@@ -46,7 +36,7 @@ const AverageDuration = (props) => {
 				fill='#FF0000'
 				width={258}
 				height={263}
-				data={formatedProps}
+				data={duration.sessions}
 				margin={{
 					top: 50,
 					right: 30,
@@ -83,5 +73,7 @@ const AverageDuration = (props) => {
 		</div>
 	);
 };
-
+AverageDuration.propTypes = {
+	duration: PropTypes.object,
+};
 export default AverageDuration;

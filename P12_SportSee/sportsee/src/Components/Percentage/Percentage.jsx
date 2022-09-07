@@ -1,4 +1,5 @@
 import './Percentage.scss';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 const backgroundColor = '##FF08';
@@ -40,5 +41,7 @@ const Percentage = (user) => {
 		</div>
 	);
 };
-
+Percentage.propTypes = {
+	user: PropTypes.object,
+};
 export default Percentage;
