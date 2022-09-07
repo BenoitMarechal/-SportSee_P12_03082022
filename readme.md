@@ -22,7 +22,7 @@ Getting started
 Back end:
 From home directory, open a terminal and run:
 
---> cd .\P9-front-end-dashboard\
+--> cd .\P12_SportSee_BACK
 
 then
 IF RUNNING FOR THE FIRST TIME:
@@ -34,7 +34,7 @@ Back end should be runnning on port 3000
 
 ---Front end:
 From home directory, open another terminal and run:
---> cd .\P12_SportSee\sportsee\
+--> cd .\P12_SportSee_FRONT
 then
 IF RUNNING FOR THE FIRST TIME:
 --> npm install (installing npm)
