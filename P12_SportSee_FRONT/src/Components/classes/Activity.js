@@ -1,6 +1,7 @@
 /**Activity class contains user's sessions data
+ *
  * @param{number} userId - id of user
- * @param{array} sessions - data about user's weight and calories burnt duraing last seven days' sessions.
+ * @param{Object} sessions - data about user's weight and calories burnt duraing last seven days' sessions.
  */
 
 export default class Activity {

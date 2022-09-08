@@ -1,13 +1,15 @@
-/**User class contains user's main data
+import caloriesIcon from '../../Assets/icons/nutrition/calories-icon.png';
+import carbsIcon from '../../Assets/icons/nutrition/carbs-icon.png';
+import fatIcon from '../../Assets/icons/nutrition/fat-icon.png';
+import proteinIcon from '../../Assets/icons/nutrition/protein-icon.png';
+
+/**
+ * Main class contains user's main data
  * @param{number} id - id of user
  * @param{object} keyData - data about calories, carbohydrates, lipids and protein
  * @param{object} userInfo - age, first and last name
  * @param{number} score OR todayScore - daily score of user
  */
-import caloriesIcon from '../../Assets/icons/nutrition/calories-icon.png';
-import carbsIcon from '../../Assets/icons/nutrition/carbs-icon.png';
-import fatIcon from '../../Assets/icons/nutrition/fat-icon.png';
-import proteinIcon from '../../Assets/icons/nutrition/protein-icon.png';
 
 export default class Main {
 	constructor(user) {

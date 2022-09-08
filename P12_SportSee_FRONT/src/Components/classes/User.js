@@ -1,7 +1,7 @@
 /**User class contains user's main data
  * @param{number} id - id of user
- * @param{object} keyData - data about calories, carbohydrates, lipids and protein
- * @param{object} userInfo - age, first and last name
+ * @param{Object} keyData - data about calories, carbohydrates, lipids and protein
+ * @param{Object} userInfo - age, first and last name
  * @param{number} score OR todayScore - daily score of user
  */
 
