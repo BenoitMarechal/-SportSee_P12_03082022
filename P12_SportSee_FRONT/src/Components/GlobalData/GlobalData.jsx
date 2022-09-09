@@ -2,6 +2,10 @@ import React from 'react';
 import './GlobalData.scss';
 
 import PropTypes from 'prop-types';
+/**GlobalData React component returns icons and nutrititional information about user
+ * @param {Object} main is an object created through the Main class, contains user's nutritional information
+ *@public
+ */
 
 const GlobalData = (main) => {
 	return (

@@ -1,5 +1,8 @@
 SportSee
 
+Full documentation of classes, functions and components can be found in
+--> P12_SportSee_FRONT\src\out\index.html
+
 Versions:
 npm v8.6.0
 yarn 1.22.18

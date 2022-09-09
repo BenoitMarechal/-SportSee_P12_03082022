@@ -1,0 +1,14 @@
+.homeContainer {
+	display: flex;
+	flex-direction: row;
+	height: 900px;
+	&__content {
+		margin: 50px 80px;
+		//&__athleteContainer {
+		// &__h2 {
+		// }
+		// &__row {
+		// }
+		//}
+	}
+}

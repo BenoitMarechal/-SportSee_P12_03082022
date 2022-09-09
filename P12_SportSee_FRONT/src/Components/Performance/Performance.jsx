@@ -2,6 +2,11 @@ import React from 'react';
 import './Performance.scss';
 import PropTypes from 'prop-types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
+
+/**Performance React component returns a recharts radar chart graphic about user's performance in diffrent fields
+ * @param {Object} perf is an object created through the Perf class, contains user's performance in diffrent fields
+ *@public
+ */
 const Performance = (performance) => {
 	return (
 		<div className='performanceContainer'>

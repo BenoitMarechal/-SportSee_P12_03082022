@@ -5,14 +5,19 @@ import { PieChart, Pie, Cell } from 'recharts';
 const backgroundColor = '##FF08';
 const COLORS = ['#FF0000', backgroundColor];
 
-const Percentage = (user) => {
+/**Percentage React component returns a recharts pie chart graphic about user's goal percentage
+ * @param {Object} main is an object created through the Main class, contains user's goal percentage
+ *@public
+ */
+
+const Percentage = (main) => {
 	return (
 		<div className='pieChart__container greyBg'>
 			<div className='pieChart__container__title'>Score</div>
 
 			<PieChart width={258} height={263} top={0}>
 				<Pie
-					data={user.percentage}
+					data={main.percentage}
 					cx={'50%'}
 					cy={'50%'}
 					innerRadius={80}
@@ -23,7 +28,7 @@ const Percentage = (user) => {
 					cornerRadius={5}
 					paddingAngle={0}
 					dataKey='value'>
-					{user.percentage.map((entry, index) => (
+					{main.percentage.map((entry, index) => (
 						<Cell
 							key={`cell-${index}`}
 							fill={index === 0 ? COLORS[index % COLORS.length] : 'none'}
@@ -32,7 +37,7 @@ const Percentage = (user) => {
 				</Pie>
 			</PieChart>
 			<div className='pieChart__container__text'>
-				<div className='pieChart__container__text__score'>{user.score}%</div>
+				<div className='pieChart__container__text__score'>{main.score}%</div>
 
 				<span className='pieChart__container__text__small'>
 					de votre objectif
@@ -42,6 +47,6 @@ const Percentage = (user) => {
 	);
 };
 Percentage.propTypes = {
-	user: PropTypes.object,
+	main: PropTypes.object,
 };
 export default Percentage;

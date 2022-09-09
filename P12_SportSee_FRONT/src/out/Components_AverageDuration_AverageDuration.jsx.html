@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Assets/fetches/fetchMain.js</title>
+    <title>JSDoc: Source: Components/AverageDuration/AverageDuration.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Assets/fetches/fetchMain.js</h1>
+    <h1 class="page-title">Source: Components/AverageDuration/AverageDuration.jsx</h1>
 
     
 
@@ -26,69 +26,92 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import localdata from '../localdata.js';
-import Main from '../../Components/classes/Main.js';
-
-/**
- *This function will get the mocked Main data and return an object through Main Class
- * @param {number} id is the user's id
- * @param {Function} setMain allows to modify 'Main' in the Profile.jsx page
- * @returns {Object} returns an Main object through Main Class
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import './averageDuration.scss';
+import {
+	LineChart,
+	Line,
+	XAxis,
+	YAxis,
+	CartesianGrid,
+	Tooltip,
+} from 'recharts';
+import PropTypes from 'prop-types';
+/**Allows to customize the tooltip in averageDuration graph
+ *@param {bool} active defines wether tooltip is active
+ *@param {array} payload contains the values to be displayed in tooltip
+ *@public
  */
+const CustomTooltip = ({ active, payload }) => {
+	if (active &amp;&amp; payload &amp;&amp; payload.length) {
+		return (
+			&lt;div className='custom-tooltip-duration'>
+				&lt;p className='desc'>{payload[0].value} min&lt;/p>
+			&lt;/div>
+		);
+	}
 
-function getMockedMain(id, setMain) {
-	let userId = parseInt(id);
-	setMain(
-		new Main(localdata.USER_MAIN_DATA.find((element) => element.id === userId))
+	return null;
+};
+CustomTooltip.propTypes = {
+	active: PropTypes.bool,
+	payload: PropTypes.array,
+};
+/**AverageDuration React component returns a Rechart graphic diplaying the duration of user's last 7 sessions
+ * @param {Object} duration is an object created through the Duration class, contains user's 7 last sessions and their duration
+ *@public
+ */
+const AverageDuration = (duration) => {
+	return (
+		&lt;div className='sessionLength__container'>
+			&lt;p className='sessionLength__container__title'>
+				Durée moyenne des sessions
+			&lt;/p>
+			&lt;LineChart
+				fill='#FF0000'
+				width={258}
+				height={263}
+				data={duration.sessions}
+				margin={{
+					top: 50,
+					right: 30,
+					left: 20,
+					bottom: 5,
+				}}>
+				{' '}
+				😋
+				&lt;CartesianGrid horizontal='' vertical='' fill='#FF0000' />
+				&lt;XAxis
+					dataKey='day'
+					tickLine={false}
+					stroke={'white'}
+					fill='#FF0000'
+					orientation='bottom'
+					textAnchor='middle'
+				/>
+				&lt;YAxis hide={true} height={150} />
+				&lt;Tooltip content={&lt;CustomTooltip />} />
+				&lt;Line
+					type='monotone'
+					dot={false}
+					dataKey='sessionLength'
+					stroke='#FFFFFF'
+					activeDot={{
+						fill: '#fff',
+						stroke: 'rgba(255, 255, 255, 0.2)',
+						strokeWidth: 8,
+						r: 4,
+						className: 'boxShadow',
+					}}
+				/>
+			&lt;/LineChart>
+		&lt;/div>
 	);
-}
-
-/**
- *This async function will fetch the Main from backend server data and return an object through Main Class
- * @param {number} id is the user's id
- * @param {Function} setMain allows to modify 'Main' in the Profile.jsx page
- *  @param {Function} setErrMain allows to modify the 'error' parameter in the Profile.jsx page
- * @returns {Object} returns an Main object through Main Class
- */
-
-async function fetchMain(id, setMain, setErrMain) {
-	try {
-		const response = await fetch('http://localhost:3000/user/' + id);
-		const result = await response.json();
-		setMain(new Main(result.data));
-	} catch (err) {
-		console.log(err);
-		setErrMain(err);
-	} finally {
-		//	console.log('Main fetch completed');
-	}
-}
-
-/**
- *This async function will fetch the Main from backend server data and return an object through Main Class
- * @param {number} id is the user's id
- * @param {Function} setMain allows to modify 'Main' in the Profile.jsx page
- * @param {Function} setMainLoading allows to modify 'MainLoading' in the Profile.jsx page
- * @param {string} env determines if the environment is "api" or 'dev'
- *  @param {Function} setErrMain allows to modify the 'error' parameter in the Profile.jsx page
- * @returns {Object} returns an Main object through Main Class by ruynning the adequate function
- */
-
-export async function selectMainSource(
-	id,
-	setMain,
-	env,
-	setMainLoading,
-	setErrMain
-) {
-	setMainLoading(true);
-	if (env === 'dev') {
-		getMockedMain(id, setMain);
-	} else {
-		await fetchMain(id, setMain, setErrMain);
-	}
-	setMainLoading(false);
-}
+};
+AverageDuration.propTypes = {
+	duration: PropTypes.object,
+};
+export default AverageDuration;
 </code></pre>
         </article>
     </section>

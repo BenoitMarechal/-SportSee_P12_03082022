@@ -2,7 +2,9 @@ import React from 'react';
 import './header.scss';
 import logo from '../../Assets/icons/logo.png';
 import { NavLink } from 'react-router-dom';
-
+/**Header React component returns page's header
+ *@public
+ */
 const Header = () => {
 	return (
 		<header className='white-on-black'>

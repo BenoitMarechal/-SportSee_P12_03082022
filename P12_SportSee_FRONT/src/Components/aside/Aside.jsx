@@ -7,9 +7,13 @@ import cycle from '../../Assets/icons/activities/Cycling.png';
 import weight from '../../Assets/icons/activities/weight.png';
 let logos = [yoga, swim, cycle, weight];
 
+/**Aside React component returns the page's aside
+ *@public
+ */
+
 const Aside = () => {
 	return (
-		<aside className='aside white-on-black'>
+		<aside className=' aside white-on-black'>
 			<div className='aside__container'>
 				{logos.map((pic) => {
 					return (

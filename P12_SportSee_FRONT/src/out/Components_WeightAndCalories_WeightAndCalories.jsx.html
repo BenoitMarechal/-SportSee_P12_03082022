@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/WeightAndCalories/WeightAndCalories.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/WeightAndCalories/WeightAndCalories.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import './WeightAndCalories.scss';
+import PropTypes from 'prop-types';
+import {
+	BarChart,
+	Bar,
+	XAxis,
+	YAxis,
+	CartesianGrid,
+	Tooltip,
+	Legend,
+} from 'recharts';
+/**Allows to customize the tooltip in weight and calories graph
+ *  @param {bool} active defines wether tooltip is active
+ * @param {array} payload contains the values to be displayed in tooltip
+ *@public
+ */
+const CustomTooltip = ({ active, payload }) => {
+	if (active &amp;&amp; payload &amp;&amp; payload.length) {
+		return (
+			&lt;div className='custom-tooltip'>
+				&lt;p className='desc'>{payload[0].value} kg&lt;/p>
+				&lt;p className='desc'>{payload[1].value} KCal&lt;/p>
+			&lt;/div>
+		);
+	}
+	return null;
+};
+
+CustomTooltip.propTypes = {
+	active: PropTypes.bool,
+	payload: PropTypes.array,
+};
+/**WeightAndCalories React component returns a recharts line chart graphic about user's weight and calories burnt
+ * @param {Object} activity is an object created through the Activity class, contains user's weight and calories burnt
+ *@public
+ */
+
+const WeightAndCalories = (activity) => {
+	return (
+		&lt;div>
+			&lt;h2 className='weight-and-calories__h2'>Activité quotidienne&lt;/h2>
+			&lt;BarChart
+				width={835}
+				height={350}
+				data={activity.sessions}
+				margin={{
+					top: 20,
+					right: 30,
+					left: 20,
+					bottom: 5,
+				}}
+				className='greyBg'>
+				&lt;div>Activité quotidienne&lt;/div>
+				&lt;CartesianGrid horizontal={'true'} vertical='' strokeDasharray='2 2' />
+				&lt;XAxis
+					dataKey='day'
+					padding={{ left: -50, right: -51 }}
+					tickLine={false}
+					stroke='#9B9EAC'
+				/>
+				&lt;YAxis yAxisId='right' orientation='left' color='#282D38' hide={true} />
+				&lt;YAxis
+					yAxisId='left'
+					orientation='right'
+					stroke='#9B9EAC'
+					type='number'
+					domain={['dataMin - 1', 'dataMax + 1']}
+					tickLine={false}
+					axisLine={false}
+					minTickGap={'0'}
+					tickSize={45}
+					allowDecimals={false}
+				/>
+				&lt;Tooltip content={&lt;CustomTooltip />} />
+				&lt;Legend
+					align='right'
+					verticalAlign='top'
+					iconType={'circle'}
+					height={50}
+				/>
+				&lt;Bar
+					yAxisId='left'
+					dataKey='kilogram'
+					fill='#282D30'
+					barSize={7}
+					radius={[3, 3, 0, 0]}
+					name={'Poids (kg)'}
+				/>
+				&lt;Bar
+					yAxisId='right'
+					dataKey='calories'
+					fill='#E60000'
+					barSize={7}
+					radius={[3, 3, 0, 0]}
+					name={'Calories brulées (kCal)'}
+				/>
+			&lt;/BarChart>
+		&lt;/div>
+	);
+};
+
+WeightAndCalories.propTypes = {
+	activity: PropTypes.object,
+};
+
+export default WeightAndCalories;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Aside">Aside</a></li><li><a href="global.html#Athlete">Athlete</a></li><li><a href="global.html#AverageDuration">AverageDuration</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#fetchActivity">fetchActivity</a></li><li><a href="global.html#fetchDuration">fetchDuration</a></li><li><a href="global.html#fetchMain">fetchMain</a></li><li><a href="global.html#fetchPerformance">fetchPerformance</a></li><li><a href="global.html#getMockedActivity">getMockedActivity</a></li><li><a href="global.html#getMockedDuration">getMockedDuration</a></li><li><a href="global.html#getMockedMain">getMockedMain</a></li><li><a href="global.html#getMockedPerformance">getMockedPerformance</a></li><li><a href="global.html#GlobalData">GlobalData</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Percentage">Percentage</a></li><li><a href="global.html#Performance">Performance</a></li><li><a href="global.html#selectActivitySource">selectActivitySource</a></li><li><a href="global.html#selectDurationSource">selectDurationSource</a></li><li><a href="global.html#selectMainSource">selectMainSource</a></li><li><a href="global.html#selectPerformanceSource">selectPerformanceSource</a></li><li><a href="global.html#WeightAndCalories">WeightAndCalories</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Fri Sep 09 2022 13:50:00 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

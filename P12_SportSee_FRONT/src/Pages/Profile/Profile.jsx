@@ -78,7 +78,7 @@ const Profile = () => {
 		<div className='profile page'>
 			<Header></Header>
 			<div className='container'>
-				<Aside className='container__aside'></Aside>
+				<Aside></Aside>
 				<div className='container__content'>
 					<div className='container__content__landing'>
 						<h1 className='container__content__landing__h1'>
@@ -94,7 +94,7 @@ const Profile = () => {
 		<div className='profile page'>
 			<Header></Header>
 			<div className='container'>
-				<Aside className='container__aside'></Aside>
+				<Aside></Aside>
 				<div className='container__content'>
 					<div className='container__content__landing'>
 						<h1 className='container__content__landing__h1'>

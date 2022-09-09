@@ -10,6 +10,11 @@ import {
 	Tooltip,
 	Legend,
 } from 'recharts';
+/**Allows to customize the tooltip in weight and calories graph
+ *  @param {bool} active defines wether tooltip is active
+ * @param {array} payload contains the values to be displayed in tooltip
+ *@public
+ */
 const CustomTooltip = ({ active, payload }) => {
 	if (active && payload && payload.length) {
 		return (
@@ -26,6 +31,10 @@ CustomTooltip.propTypes = {
 	active: PropTypes.bool,
 	payload: PropTypes.array,
 };
+/**WeightAndCalories React component returns a recharts line chart graphic about user's weight and calories burnt
+ * @param {Object} activity is an object created through the Activity class, contains user's weight and calories burnt
+ *@public
+ */
 
 const WeightAndCalories = (activity) => {
 	return (

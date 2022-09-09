@@ -9,7 +9,11 @@ import {
 	Tooltip,
 } from 'recharts';
 import PropTypes from 'prop-types';
-
+/**Allows to customize the tooltip in averageDuration graph
+ *@param {bool} active defines wether tooltip is active
+ *@param {array} payload contains the values to be displayed in tooltip
+ *@public
+ */
 const CustomTooltip = ({ active, payload }) => {
 	if (active && payload && payload.length) {
 		return (
@@ -25,7 +29,10 @@ CustomTooltip.propTypes = {
 	active: PropTypes.bool,
 	payload: PropTypes.array,
 };
-
+/**AverageDuration React component returns a Rechart graphic diplaying the duration of user's last 7 sessions
+ * @param {Object} duration is an object created through the Duration class, contains user's 7 last sessions and their duration
+ *@public
+ */
 const AverageDuration = (duration) => {
 	return (
 		<div className='sessionLength__container'>
