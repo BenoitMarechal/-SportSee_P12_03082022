@@ -50,5 +50,6 @@ Coded in Visual Studio Code
 
 ## 3. Documention
 
-- [Full documentation of classes, functions and components can be found at](P12_SportSee_FRONT\src\out\index.html)
-- [Back end documantation can be found at](P12_SportSee_BACK\README.md)
+- Full documentation of classes, functions and components can be found at /P12_SportSee_FRONT\src\out\index.html
+
+- Back end documantation can be found at /P12_SportSee_BACK\README.md
