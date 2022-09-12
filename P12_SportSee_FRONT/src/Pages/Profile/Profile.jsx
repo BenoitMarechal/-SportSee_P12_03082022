@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../Components/header/Header';
+import Aside from '../../Components/aside/Aside';
 import { useParams } from 'react-router';
 import './profile.scss';
-import Aside from '../../Components/aside/Aside';
 
 import WeightAndCalories from '../../Components/WeightAndCalories/WeightAndCalories';
 import Performance from '../../Components/Performance/Performance';
 import AverageDuration from '../../Components/AverageDuration/AverageDuration';
 import Percentage from '../../Components/Percentage/Percentage';
 import GlobalData from '../../Components/GlobalData/GlobalData';
+
 import { selectMainSource } from '../../Assets/fetches/fetchMain';
 import { selectActivitySource } from '../../Assets/fetches/fetchActivity';
 import { selectDurationSource } from '../../Assets/fetches/fetchDuration';
 import { selectPerformanceSource } from '../../Assets/fetches/fetchPerformance';
-
-//documenter avec proptypes
-//readme md
 
 const Profile = () => {
 	/////// Environment parameters

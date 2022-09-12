@@ -8,6 +8,7 @@ import {
 	CartesianGrid,
 	Tooltip,
 } from 'recharts';
+
 import PropTypes from 'prop-types';
 /**Allows to customize the tooltip in averageDuration graph
  *@param {bool} active defines wether tooltip is active
@@ -52,12 +53,11 @@ const AverageDuration = (duration) => {
 				}}>
 				{' '}
 				😋
-				<CartesianGrid horizontal='' vertical='' fill='#FF0000' />
 				<XAxis
 					dataKey='day'
 					tickLine={false}
 					stroke={'white'}
-					fill='#FF0000'
+					// fill='#FF0000'
 					orientation='bottom'
 					textAnchor='middle'
 				/>
@@ -80,6 +80,7 @@ const AverageDuration = (duration) => {
 		</div>
 	);
 };
+
 AverageDuration.propTypes = {
 	duration: PropTypes.object,
 };
